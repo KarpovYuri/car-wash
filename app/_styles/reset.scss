@@ -1,0 +1,51 @@
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+::-webkit-scrollbar {
+	display: none;
+}
+
+html,
+body {
+	overflow-x: hidden;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+input:focus {
+	outline: none;
+}
+
+button,
+input[type="button"],
+a {
+	cursor: pointer;
+}
+
+a {
+	text-decoration: none;
+}
+
+a,
+li,
+p,
+div,
+span,
+button,
+input[type="button"] {
+	user-select: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
