@@ -6,7 +6,9 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint"
+		"lint": "next lint",
+		"export": "next export",
+		"build:static": "npm run build && npm run export"
 	},
 	"dependencies": {
 		"@nextui-org/dropdown": "^2.1.16",
