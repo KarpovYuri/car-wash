@@ -15,7 +15,7 @@ export async function sendAuthCode(data) {
 		console.error("Ошибка при отправке send-auth-code:", res.status);
 		return res.data;
 	} catch (error) {
-		toast.error("Подождите 120 секунд");
+		toast.error("Подождите 60 секунд");
 		console.error("Ошибка при отправке send-auth-code:", error);
 		return error;
 	}

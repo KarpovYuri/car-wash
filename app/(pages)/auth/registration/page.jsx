@@ -73,8 +73,9 @@ export default function Registration() {
 	const [serviceTermsConsent, setServiceTermsConsent] = useState(false);
 	const [isSmsAuth, setIsSmsAuth] = useState(false);
 
-	const [timeLeft, setTimeLeft] = useState(120);
-	const [buttonText, setButtonText] = useState("2:00");
+	const [timeLeft, setTimeLeft] = useState(60);
+	const [buttonText, setButtonText] = useState("1:00");
+	const [isRegPage, setIsRegPage] = useState(false);
 
 	const router = useRouter();
 
@@ -85,10 +86,21 @@ export default function Registration() {
 	};
 
 	useEffect(() => {
+		const queryParams = new URLSearchParams(window.location.search);
+		const typeParam = queryParams.get("type");
+
+		if (typeParam !== "login") {
+			setIsRegPage(true);
+			setIsSmsAuth(true);
+		}
+	}, []);
+
+	useEffect(() => {
 		if (isSmsAuth) {
-			setVerificationCode(Array(6).fill(""))
+			setVerificationCode(Array(6).fill(""));
+			if(!isRegPage) sendAuthCode({ phone: phone });
 		} else {
-			setVerificationCode(Array(4).fill(""))
+			setVerificationCode(Array(4).fill(""));
 		}
 	}, [isSmsAuth]);
 
@@ -310,7 +322,10 @@ export default function Registration() {
 								</Button>
 							)}
 						</div>
-						<p className={"text-sm text-black/40 text-center mt-4"}>
+						<p
+							className={`text-sm text-black/40 text-center mt-4 ${
+								!isSmsAuth ? "opacity-0 pointer-events-none" : ""
+							}`}>
 							Не получили код?{" "}
 							<button
 								className={"text-purple--main"}
@@ -319,7 +334,7 @@ export default function Registration() {
 										await sendAuthCode({ phone: phone }); // Вызов функции
 									} else {
 										await initiateFlashCall({ phone: phone });
-										setTimeLeft(120);
+										setTimeLeft(60);
 										setVerifyPhoneErrorMsg("");
 										setVerificationCode(Array(4).fill(""));
 									}
