@@ -26,7 +26,7 @@ export default function Item({ number, wash, date, value, type, user }) {
 				{value} <span className={"font-bold"}>₽</span>
 			</div>
 			<div className={"flex items-center gap-1 basis-1/6 px-4 lg:px-3 py-3 text-purple--secondary"}>
-				{wash?.city + "," + wash?.address}
+				{wash?.city + ", " + wash?.address}
 			</div>
 			<div className={"flex items-center gap-1 basis-1/6 px-4 lg:px-3 py-3"}>
 				<Image width={16} height={16} src={"/img/icons/calendar.svg"} alt={"Иконка календаря"} />

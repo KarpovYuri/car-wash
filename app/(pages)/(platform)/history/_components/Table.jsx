@@ -19,7 +19,7 @@ export default function Table({ data = { models: [] } }) {
 						(heading, index) => (
 							<p
 								className={
-									"basis-1/6 text-black/40 py-3 lg:flex-middle lg:text-center px-4 border-l-black-low-opacity-gradient"
+									"basis-1/6 mt-0 text-black/40 py-3 lg:flex-middle lg:text-center px-4 border-l-black-low-opacity-gradient"
 								}
 								key={index}>
 								{heading}
@@ -49,15 +49,26 @@ export default function Table({ data = { models: [] } }) {
 							),
 						)}
 					</div>
-					{data.map(({ number, address, date, source, sum, type }) => (
+					{/*{data.map(({ number, address, date, source, sum, type }) => (*/}
+					{/*	<Item*/}
+					{/*		key={id}*/}
+					{/*		number={number}*/}
+					{/*		address={address}*/}
+					{/*		date={date}*/}
+					{/*		source={source}*/}
+					{/*		sum={sum}*/}
+					{/*		type={type}*/}
+					{/*	/>*/}
+					{/*))}*/}
+					{data.map(({ id, wash, created_at, value, type, user }) => (
 						<Item
-							key={number}
-							number={number}
-							address={address}
-							date={date}
-							source={source}
-							sum={sum}
+							key={id}
+							number={id}
+							wash={wash}
+							date={created_at}
+							value={value}
 							type={type}
+							user={user}
 						/>
 					))}
 				</div>

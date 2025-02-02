@@ -3,7 +3,7 @@ import { readCookie } from "@/app/utils/cookie";
 
 const axiosInstance = axios.create({ baseURL: process.env.host });
 axiosInstance.interceptors.request.use(config => {
-	config.headers.Authorization = "Bearer_token " + readCookie("bearer_token");
+	config.headers.Authorization = "Bearer " + readCookie("bearer_token");
 	return config;
 });
 
